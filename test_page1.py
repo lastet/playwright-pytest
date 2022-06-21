@@ -6,7 +6,12 @@ def test_text_check(page: Page):
     page.goto("https://www.hhs.gov/")
     pull_right = page.locator('[class="site-name pull-right"]')
     assert pull_right.inner_text() == 'U.S. Department of Health & Human Services'
-
+    
+    
+    find_vaccine_btn = page.locator("//div[@class='field field--name-field-uswds-button field--type-link field--label-hidden field--item']//a[text()='Find a Vaccine']")
+    expect(find_vaccine_btn).to_be_visible()
+    
+    
     search_box = page.locator('[class="global-search"]')
     expect(search_box).to_be_visible()
     search_box.fill("aa2222")
